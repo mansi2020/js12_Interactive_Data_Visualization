@@ -66,3 +66,28 @@ anime({
     targets: container,
     translateX:["-1000px",0],
 });
+
+// Additional Animation on the chart container
+const chartContainer = document.querySelector(".chart-container");
+anime({
+  targets: chartContainer,
+  translateX: ["-1000px", "0"],
+});
+
+// Add interactivity to the chart - tooltips
+ctx.addEventListener("mousemove", (event) => {
+    const activePoints = ctx.chart.getElementsAtEvent(event);
+    if (activePoints.length > 0) {
+      const data = activePoints[0]._chart.data.datasets[0].data;
+      const label = activePoints[0]._model.label;
+      const value = data[activePoints[0]._index];
+      alert(`${label}: ${value}`);
+    }
+  });
+ 
+  
+  
+  
+  
+  
+  
